@@ -1,15 +1,14 @@
 /**
  * @author Almer Ibarra
- * @function Establece los controles para el formulario
- *  
+ * @description Establece los controles para el formulario
  */
 
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
+//-------------
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { FlickrPage } from '../flickr/flickr';
+//-------------
 import { NamePage } from '../name/name';
-import { IntroPage } from '../intro/intro';
 
 @Component({
   selector: 'page-home',
@@ -22,12 +21,22 @@ export class HomePage implements OnInit {
   contrasena: FormControl;
 
 
-  constructor(public navCtrl: NavController) { }
+  constructor(
+    public navCtrl: NavController
+  ) { }
 
+  //Por prefencia hago los formularios por funciones para abreviar su uso
   ngOnInit() {
     this.createControles();
     this.getControles();
   }
+
+  /**
+   * @description:
+   * 
+   * Creamos los controles del formulario con su respectivo patron
+   * El patron valida si hay un solo @
+   */
 
   createControles() {
     this.nombre = new FormControl('', [
@@ -38,6 +47,7 @@ export class HomePage implements OnInit {
       Validators.pattern('[^ @]*@[^ @]*')]);
   }
 
+  //Asignamos el valor de los controles ya creados a sus respectivas variables
   getControles() {
     this.formulario = new FormGroup({
       nombre: this.nombre,
@@ -45,12 +55,10 @@ export class HomePage implements OnInit {
     })
   }
 
+  //Para dirigir a la Pagina de la API
   nameapi() {
     this.navCtrl.push(NamePage);
   }
 
-  flickr() {
-    this.navCtrl.push(FlickrPage);
-  }
 
 }

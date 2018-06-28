@@ -6,37 +6,24 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyApp } from './app.component';
+//----------------
 import { HomePage } from '../pages/home/home';
 //-----------------
-import { FlickrService } from '../pages/service/flickr.service';
-//-----------------
-import { FlickrPage } from '../pages/flickr/flickr';
 
-import {
-  MatFormFieldModule,
-  MatInputModule,
-  MatCardModule,
-} from '@angular/material';
 import { HttpModule } from '@angular/http';
 import { nameApiService } from '../pages/service/nameapi.service';
 import { NamePage } from '../pages/name/name';
 
-import { IntroPage } from "../pages/intro/intro";
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    FlickrPage,
+    HomePage, //Paginas
     NamePage,
-    IntroPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp, {scrollAssist: false, autoFocusAssist: false}),
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
+    IonicModule.forRoot(MyApp, { scrollAssist: false, autoFocusAssist: false }),
     HttpModule,
     BrowserAnimationsModule,
     ReactiveFormsModule
@@ -45,17 +32,13 @@ import { IntroPage } from "../pages/intro/intro";
   entryComponents: [
     MyApp,
     HomePage,
-    FlickrPage, //paginas
     NamePage,
-    IntroPage
   ],
   providers: [
-    StatusBar,
-,    
+    StatusBar, 
     SplashScreen,
-    FlickrService, //Servicios
-    nameApiService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    nameApiService, //Servicio
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }
