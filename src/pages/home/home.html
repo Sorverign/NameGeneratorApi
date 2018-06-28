@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title text-center>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="formulario">
+    <ion-item
+      formControlName="nombre"
+      [ngClass]="{
+      'incorrecto': nombre.invalid && nombre.dirty,
+      'correcto':   nombre.valid && nombre.dirty}"
+    >
+      <ion-label>
+        Nombre
+
+        <ion-icon name="person"></ion-icon>
+      </ion-label>
+
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item
+      formControlName="contrasena"
+      [ngClass]="{
+      'incorrecto': contrasena.invalid && contrasena.dirty,
+      'correcto':   contrasena.valid && contrasena.dirty}"
+    >
+      <ion-label>
+        Contrasena
+
+        <ion-icon name="key"></ion-icon>
+      </ion-label>
+
+      <ion-input type="password"></ion-input>
+    </ion-item>
+
+    <ion-row center>
+      <ion-col text-center>
+        <ion-icon
+          id="icon"
+          name="home"
+        ></ion-icon>
+      </ion-col>
+    </ion-row>
+
+      <div
+        center
+        text-center
+      >
+      <ng-container *ngIf="nombre.invalid && contrasena.invalid; else sino">
+              
+        <button
+          ion-button
+          padding
+          disabled
+          >NameApi</button>
+        
+      </ng-container>
+          
+        <ng-template #sino>
+      
+        <button
+          ion-button
+          padding
+          (click)="nameapi()"
+          >NameApi</button>
+        </ng-template>
+
+      
+      </div>
+  </form>
+</ion-content>
